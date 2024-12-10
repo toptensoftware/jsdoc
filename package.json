@@ -1,0 +1,24 @@
+{
+  "name": "@toptensoftware/jsdoc",
+  "version": "0.0.1",
+  "description": "Helper functions for working with JSDoc content",
+  "main": "jsdoc.js",
+  "type": "module",
+  "scripts": {},
+  "author": "Topten Software",
+  "contributors": [
+    {
+      "name": "Brad Robinson",
+      "email": "contact@toptensoftware.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toptensoftware/jsdoc.git"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@toptensoftware/strangle": "github:toptensoftware/strangle",
+    "@toptensoftware/unindent": "github:toptensoftware/unindent"
+  }
+}
