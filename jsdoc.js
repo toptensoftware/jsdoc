@@ -387,8 +387,8 @@ export function formatNamePath(np)
     let str = "";
     for (let n of np)
     {
-        if (n.delimiter)
-            str += n.delimiter;
+        if (n.delim)
+            str += n.delim;
         if (n.prefix)
             str += n.prefix;
         str += escapeNamePathElement(n.name);
