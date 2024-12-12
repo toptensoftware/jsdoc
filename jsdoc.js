@@ -220,7 +220,7 @@ export function parseInline(body)
         t.pos += 2;
 
         // link | linkplain | linkcode
-        let kind = t.read(/link|linkplain|linkcode\b/y);
+        let kind = t.read(/linkplain|linkcode|link\b/y);
         if (!kind)
             continue;
         kind = kind[0];
