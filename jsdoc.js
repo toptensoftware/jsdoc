@@ -320,6 +320,9 @@ export function escapeNamePathElement(name)
 // }
 export function parseNamePath(t)
 {
+    if (typeof(t) === "string")
+        t = strangle(t);
+    
     let start = t.pos;
     let namepath = [];
     let delim = undefined;
@@ -379,7 +382,6 @@ export function parseNamePath(t)
     t.pos = start;
     return null;
 }
-
 
 // Format an expanded name path array into a string
 export function formatNamePath(np)

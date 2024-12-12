@@ -71,7 +71,7 @@ export function escapeNamePathElement(name);
 //     delimiter: string or undefined delimiter from previous element (eg: "#" or "." or "~")
 //     name: string the name of the element (after unescaping, removing quoted etc)
 // }
-export function parseNamePath(t);
+export function parseNamePath(str);
 
 // Format an expanded name path array into a string
 export function formatNamePath(np);
