@@ -321,7 +321,13 @@ export function escapeNamePathElement(name)
 export function parseNamePath(t)
 {
     if (typeof(t) === "string")
+    {
         t = strangle(t);
+        let np = parseNamePath(t);
+        if (!t.eof)
+            return null;
+        return np;
+    }
     
     let start = t.pos;
     let namepath = [];
@@ -348,7 +354,17 @@ export function parseNamePath(t)
         else
         {
             // Normal identifier?
-            let id = t.readIdentifier();
+            let id;
+            if (prefix == "module:")
+            {
+                // Allow @scope/package style names in module part
+                id = t.read(/[a-zA-Z_$@/][a-zA-Z0-9_$@/]*/y);
+                id = id ? id[0] : undefined;
+            }
+            else
+            {
+                id = t.readIdentifier();
+            }
             if (id)
             {
                 namepath.push({
@@ -372,7 +388,7 @@ export function parseNamePath(t)
         }
 
         // End of name path?
-        if (t.match(/[| \t\}]/y))
+        if (t.eof || t.match(/[| \t\}]/y))
             return namepath;
 
         // Unknown, not a name path

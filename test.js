@@ -1,6 +1,6 @@
 import { strict as assert } from "node:assert";
 import { test } from "node:test";
-import { escapeNamePathElement, parseBlock, parseInline, parseParamName, replaceInline, stripComments } from "./jsdoc.js";
+import { escapeNamePathElement, parseBlock, parseInline, parseNamePath, parseParamName, replaceInline, stripComments } from "./jsdoc.js";
 import { strangle } from "@toptensoftware/strangle";
 
 
@@ -333,4 +333,27 @@ test("parse inline multiple", () => {
             }
         ]
     });
+});
+
+
+test("parse namepath", () => {
+
+    let np = parseNamePath("module:@scope/lib.name#prop");
+
+    assert.equal(np.length, 3);
+    assert.equal(np[0].prefix, "module:");
+    assert.equal(np[0].name, "@scope/lib");
+    assert.equal(np[1].delim, ".");
+    assert.equal(np[1].name, "name");
+    assert.equal(np[2].delim, "#");
+    assert.equal(np[2].name, "prop");
+
+});
+
+test("parse invalid namepath", () => {
+
+    let np = parseNamePath("module:@scope/lib.name#prop  xxx");
+
+    assert.equal(np, null);
+
 });

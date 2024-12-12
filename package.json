@@ -1,6 +1,6 @@
 {
   "name": "@toptensoftware/jsdoc",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Helper functions for working with JSDoc content",
   "main": "jsdoc.js",
   "type": "module",
